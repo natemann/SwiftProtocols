@@ -25,7 +25,7 @@ extension String {
         }
     }
     
-    
+//    Will This change?
     func toNSDecimalNumber() -> NSDecimalNumber? {
         if let double = toDouble() {
             return NSDecimalNumber(double: double)
