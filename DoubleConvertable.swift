@@ -19,17 +19,17 @@ protocol DoubleConvertable {
 extension String: DoubleConvertable {
     
     func toDouble() -> Double? {
-        //        ordinary number string to double
-        if let double = NSNumberFormatter().numberFromString(self)?.doubleValue {
+        //ordinary number string to double
+        if let double = NumberFormatter().number(from: self)?.doubleValue {
             return double
         }
         else {
-            //            currency string to double
-            let formatter = NSNumberFormatter()
+            //currency string to double
+            let formatter = NumberFormatter()
             
-            formatter.numberStyle = .CurrencyStyle
+            formatter.numberStyle = .currency
             formatter.negativeFormat = "-¤#,##0.00"
-            return formatter.numberFromString(self)?.doubleValue
+            return formatter.number(from: self)?.doubleValue
         }
     }
     

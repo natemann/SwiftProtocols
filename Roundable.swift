@@ -11,18 +11,17 @@ import Foundation
 
 protocol Roundable {
     
-    func roundTo(places: Int16) -> NSDecimalNumber
+    func roundTo(_ places: Int16) -> NSDecimalNumber
     
 }
 
 
-extension Roundable where Self: NSDecimalNumber {
-    
-    func roundTo(places: Int16) -> NSDecimalNumber {
-        return self.decimalNumberByRoundingAccordingToBehavior(NSDecimalNumberHandler(roundingMode: .RoundPlain, scale: places, raiseOnExactness: true, raiseOnOverflow: true, raiseOnUnderflow: true,raiseOnDivideByZero: true))
+
+
+extension NSDecimalNumber: Roundable {
+
+    func roundTo(_ places: Int16) -> NSDecimalNumber {
+        return self.rounding(accordingToBehavior: NSDecimalNumberHandler(roundingMode: .plain, scale: places, raiseOnExactness: true, raiseOnOverflow: true, raiseOnUnderflow: true,raiseOnDivideByZero: true))
     }
-    
+
 }
-
-
-extension NSDecimalNumber: Roundable { }

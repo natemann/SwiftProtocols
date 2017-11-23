@@ -18,11 +18,11 @@ public protocol CurrencyStringConvertable {
 extension NSNumber: CurrencyStringConvertable {
     
     public func toCurrencyString() -> String {
-        let formatter = NSNumberFormatter()
+        let formatter = NumberFormatter()
         
-        formatter.numberStyle    = .CurrencyStyle
+        formatter.numberStyle    = .currency
         formatter.negativeFormat = "-¤#,##0.00"
-        return formatter.stringFromNumber(self)!
+        return formatter.string(from: self)!
     }
     
 }
